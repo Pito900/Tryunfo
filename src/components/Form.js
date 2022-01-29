@@ -22,40 +22,47 @@ class Form extends React.Component {
       <div>
         <input
           type="text"
+          name="cardName"
           value={ cardName }
           data-testid="name-input"
           onChange={ onInputChange }
         />
         <textarea
+          name="cardDescription"
           value={ cardDescription }
           data-testid="description-input"
           onChange={ onInputChange }
         />
         <input
           type="number"
+          name="cardAttr1"
           value={ cardAttr1 }
           data-testid="attr1-input"
           onChange={ onInputChange }
         />
         <input
           type="number"
+          name="cardAttr2"
           value={ cardAttr2 }
           data-testid="attr2-input"
           onChange={ onInputChange }
         />
         <input
           type="number"
+          name="cardAttr3"
           value={ cardAttr3 }
           data-testid="attr3-input"
           onChange={ onInputChange }
         />
         <input
           type="text"
+          name="cardImage"
           value={ cardImage }
           data-testid="image-input"
           onChange={ onInputChange }
         />
         <select
+          name="cardRare"
           value={ cardRare }
           data-testid="rare-input"
           onChange={ onInputChange }
@@ -66,12 +73,14 @@ class Form extends React.Component {
         </select>
         <input
           type="checkbox"
+          name="cardTrunfo"
           checked={ cardTrunfo }
           data-testid="trunfo-input"
           onChange={ onInputChange }
         />
         <button
           type="button"
+          name=""
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
