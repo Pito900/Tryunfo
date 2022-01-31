@@ -6,18 +6,20 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      cardList: [],
       cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.saveValidation = this.saveBuValidation(this);
+    this.saveValidation = this.saveBuValidation.bind(this);
+    this.saveCardBt = this.saveCardBt.bind(this);
   }
 
   handleChange({ target }) {
@@ -60,6 +62,38 @@ class App extends React.Component {
     return !quale;
   }
 
+  saveCardBt() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const cardInfo = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    };
+    this.setState(({ cardList }) => ({ cardList: [...cardList, cardInfo] }),
+      () => this.setState({ cardName: '',
+        cardDescription: '',
+        cardAttr1: 0,
+        cardAttr2: 0,
+        cardAttr3: 0,
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: false,
+        isSaveButtonDisabled: true,
+      }));
+  }
+
   render() {
     return (
       <div>
@@ -67,6 +101,7 @@ class App extends React.Component {
         <Form
           { ...this.state }
           onInputChange={ this.handleChange }
+          onSaveButtonClick={ this.saveCardBt }
         />
 
         <Card { ...this.state } />
