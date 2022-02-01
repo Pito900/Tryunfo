@@ -21,6 +21,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.saveValidation = this.saveBuValidation.bind(this);
     this.saveCardBt = this.saveCardBt.bind(this);
+    this.printCardList = this.printCardList.bind(this);
   }
 
   handleChange({ target }) {
@@ -61,6 +62,11 @@ class App extends React.Component {
     const vOrF = [vStr, vAtr, vSum];
     const quale = vOrF.every((item) => item === true);
     return !quale;
+  }
+
+  printCardList = () => {
+    const { cardList, cardName } = this.state;
+    return cardList.map((card, index) => <Card { ...card } key={ cardName + index } />);
   }
 
   saveCardBt() {
@@ -110,6 +116,9 @@ class App extends React.Component {
         />
 
         <Card { ...this.state } />
+        <section>
+          {this.printCardList()}
+        </section>
       </div>
     );
   }
